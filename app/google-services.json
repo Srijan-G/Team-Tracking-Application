@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "135801941545",
-    "firebase_url": "https://teamtrackingapptest2.firebaseio.com",
-    "project_id": "teamtrackingapptest2",
-    "storage_bucket": "teamtrackingapptest2.appspot.com"
+    "project_number": "359165640027",
+    "firebase_url": "https://test1-957ea.firebaseio.com",
+    "project_id": "test1-957ea",
+    "storage_bucket": "test1-957ea.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:135801941545:android:989665cfd7a7d63bfff638",
+        "mobilesdk_app_id": "1:359165640027:android:20f1c7c7c0a80a65c1ae7e",
         "android_client_info": {
-          "package_name": "com.example.teamtrackingapptest2"
+          "package_name": "com.example.test1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "135801941545-lhi6tcpehv80i5dl0a8rg7qcv888p9t7.apps.googleusercontent.com",
+          "client_id": "359165640027-ilbmorrqvgqc1idmflhg3nq733u6nabq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.teamtrackingapptest2",
-            "certificate_hash": "9ad106081a9a6055262a6f6b745bdd6e4f424eae"
+            "package_name": "com.example.test1",
+            "certificate_hash": "6f1e04b54e535b79cafbef837a3333cd016d7ea8"
           }
         },
         {
-          "client_id": "135801941545-2jaoee50m2vqc407i64547ohbp1hhuh8.apps.googleusercontent.com",
+          "client_id": "359165640027-nggdjskpnfoi44s8h441ejm8qbhoiccl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC7SiF5jELM0AjLWHokkjSnQl16ITXTDSY"
+          "current_key": "AIzaSyBDG48LC7THIOEry-NDqujqfpFlnF0V3xs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "135801941545-2jaoee50m2vqc407i64547ohbp1hhuh8.apps.googleusercontent.com",
+              "client_id": "359165640027-nggdjskpnfoi44s8h441ejm8qbhoiccl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

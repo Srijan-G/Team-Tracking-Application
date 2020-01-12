@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">TeamUp</string>
+    <string name="app_name">Test1</string>
+    <array name="Domain">
+        <item>Coding</item>
+        <item>Mechanical</item>
+        <item>Electrical</item>
+        <item>Corporate</item>
+        <item>Control and Algo</item>
+    </array>
 </resources>
