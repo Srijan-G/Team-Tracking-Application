@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "135801941545-ud9b37k76onj1erkooei7be69k8it3k8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teamtrackingapptest2",
+            "certificate_hash": "6f1e04b54e535b79cafbef837a3333cd016d7ea8"
+          }
+        },
+        {
           "client_id": "135801941545-lhi6tcpehv80i5dl0a8rg7qcv888p9t7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
