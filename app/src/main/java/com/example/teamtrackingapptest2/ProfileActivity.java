@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class ProfileActivity extends AppCompatActivity {
+    Button btn_take_attendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        btn_take_attendance=findViewById(R.id.attendance_btn);
+        btn_take_attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(ProfileActivity.this, attendance_main.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
