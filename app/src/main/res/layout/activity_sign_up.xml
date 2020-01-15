@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:background="@drawable/bglogin3">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="50dp"
+        android:textSize="28sp"
+        />
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@drawable/edit_round"
+        android:hint="Enter email ID"
+        android:layout_gravity="center"
+        android:layout_marginTop="-180dp"
+        android:layout_marginLeft="-180dp"
+        android:textSize="18sp"
+        android:inputType="textEmailAddress"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="10dp"
+        />
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@drawable/edit_round"
+        android:hint="Enter password"
+        android:layout_gravity="center"
+        android:layout_marginTop="-100dp"
+        android:layout_marginLeft="-250dp"
+        android:textSize="18sp"
+        android:inputType="textPassword"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="10dp"
+
+        />
+
+    <Button
+        android:id="@+id/buttonsignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonbackg"
+        android:layout_marginLeft="-170dp"
+        android:layout_gravity="center"
+        android:text="Sign Up"
+        android:textColor="#ffff"
+        android:textAllCaps="false"
+
+        />
+    <TextView
+        android:id="@+id/openlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Login"
+        android:textColor="#ffff"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="-180dp"
+        android:textSize="20sp"
+        />
+    <ImageView
+        android:layout_width="226dp"
+        android:layout_height="196dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="-265dp"
+        android:background="@drawable/loginpic" />
+
+</LinearLayout>
