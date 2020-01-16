@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class ProfileActivity extends AppCompatActivity {
-    Button btn_take_attendance;
+    Button btn_take_attendance,btn_teamlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         btn_take_attendance=findViewById(R.id.attendance_btn);
+        btn_teamlist=findViewById(R.id.teamlistbtn);
         btn_take_attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +34,15 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        btn_teamlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(ProfileActivity.this, ADD_MEMBER.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

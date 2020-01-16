@@ -17,27 +17,32 @@
         android:orientation="horizontal"
         android:layout_margin="10dp"
         >
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Date : "
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:layout_weight="1"/>
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:hint="DD-MM-YYYY"
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_date_picker"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_grid_on_black_24dp"
             android:text="Pick a Date"
-            android:layout_weight="1"/>
+            android:textSize="10sp" />
 
     </LinearLayout>
     <TextView

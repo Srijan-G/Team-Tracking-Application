@@ -30,37 +30,37 @@
             android:textStyle="bold"
             android:textColor="#ffff"
             />
+
         <Button
+            android:id="@+id/teamlistbtn"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/buttonbackg"
-            android:layout_marginBottom="100dp"
             android:layout_marginLeft="-300dp"
-            android:text="CHECK TEAM LIST"
-            android:textStyle="bold"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/buttonbackg"
+            android:text="ADD MEMBERS"
             android:textColor="#ffff"
-            />
+            android:textStyle="bold" />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/buttonbackg"
-            android:layout_marginBottom="0dp"
             android:layout_marginLeft="-300dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/buttonbackg"
             android:text="EVENTS PAGE"
-            android:textStyle="bold"
             android:textColor="#ffff"
-            />
+            android:textStyle="bold" />
+
         <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/buttonbackg"
-            android:layout_marginTop="100dp"
             android:layout_marginLeft="-300dp"
-            android:text="ADD/REMOVE MEMBERS"
-            android:textStyle="bold"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/buttonbackg"
+            android:text="TEAMLIST"
             android:textColor="#ffff"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

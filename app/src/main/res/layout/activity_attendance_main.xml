@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/bglogin3"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,19 +16,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:background="@drawable/attendace_bg"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Track My Attendance"
-
+                android:text="Track Attendance"
                 android:textSize="24sp"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textAllCaps="true"
+                android:textColor="#ffff"
                 android:layout_margin="8dp"
                 />
             <LinearLayout
@@ -39,9 +40,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NAME : "
+                    android:text="Name : "
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    android:textColor="#ffff"
                     />
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -50,9 +52,10 @@
 
                     <SearchView
                         android:id="@+id/search_bar"
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="250dp"
+                        android:layout_height="30dp"
                         android:queryHint="Search Here"
+                        android:background="@drawable/edit_round"
                         android:iconifiedByDefault="false"
                         />
 
@@ -62,7 +65,8 @@
                         android:layout_width="273dp"
                         android:layout_height="98dp"
                         android:layout_below="@id/search_bar"
-                        android:layout_marginTop="2dp" />
+                        android:layout_marginTop="2dp"
+                        android:foregroundTint="#FFFFFF" />
 
 
                 </RelativeLayout>
@@ -84,18 +88,34 @@
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 >
+
                 <TextView
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="2"
                     android:text="From : "
                     android:textSize="24sp"
-                    android:layout_weight="2"/>
+                    android:textColor="#ffff"
+                    android:textStyle="bold"/>
+                <Button
+                    android:id="@+id/btn_date_picker_from"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_grid_on_black_24dp"
+                    android:text="Pick a Date"
+                    android:textSize="8sp"
+                    android:background="@drawable/edit_round"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="2dp"/>
                 <EditText
                     android:id="@+id/edt_from"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="DD-MM-YYYY"
+                    android:textColorHint="#ffff"
+                    android:textColor="#ffff"
                     android:inputType="date"
                     />
 
@@ -113,7 +133,20 @@
                     android:layout_height="wrap_content"
                     android:text="To : "
                     android:textSize="24sp"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2"
+                    android:textColor="#ffff"
+                    android:textStyle="bold"/>
+                <Button
+                    android:id="@+id/btn_date_picker_to"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_grid_on_black_24dp"
+                    android:text="Pick a Date"
+                    android:textSize="8sp"
+                    android:background="@drawable/edit_round"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="2dp"/>
                 <EditText
                     android:id="@+id/edt_to"
                     android:layout_width="wrap_content"
@@ -121,6 +154,8 @@
                     android:layout_weight="1"
                     android:inputType="date"
                     android:hint="DD-MM-YYYY"
+                    android:textColorHint="#ffff"
+                    android:textColor="#ffff"
                     />
 
 
@@ -133,7 +168,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Track"
+                android:textColor="#ffff"
+                android:textStyle="bold"
                 android:layout_margin="8dp"
+                android:background="@drawable/custombtn2"
                 />
 
 
@@ -152,57 +190,12 @@
             android:paddingHorizontal="15dp"
             android:paddingVertical="15dp"
             android:text="Take Attendance"
+            android:textColor="#ffff"
             android:textSize="25sp"
+            android:background="@drawable/custombtn2"
 
             />
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:layout_margin="10dp"
 
-            app:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/card_bg">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:text="Add Student"
-                    android:textColor="#312E2E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edt_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Name" />
-
-                <Spinner
-
-                    android:id="@+id/domain"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/Domain" />
-
-                <Button
-                    android:id="@+id/btn_add_student"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Add Student"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:background="#283593"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>
 

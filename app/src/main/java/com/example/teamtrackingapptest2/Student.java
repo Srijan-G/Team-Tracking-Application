@@ -1,23 +1,25 @@
 package com.example.teamtrackingapptest2;
 
 public class Student {
-    String name;
+
     String id;
-    String domanin;
+    String Name;
+    String POT;
+    String Branch;
+    String Year;
+    String DateOfJoin;
+    String Projects;
+
     public Student(){}
 
-    public Student(String name, String id, String domanin) {
-        this.name = name;
+    public Student(String id, String name, String POT, String branch, String year, String dateOfJoin, String projects) {
         this.id = id;
-        this.domanin = domanin;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        Name = name;
+        this.POT = POT;
+        Branch = branch;
+        Year = year;
+        DateOfJoin = dateOfJoin;
+        Projects = projects;
     }
 
     public String getId() {
@@ -28,11 +30,51 @@ public class Student {
         this.id = id;
     }
 
-    public String getDomanin() {
-        return domanin;
+    public String getName() {
+        return Name;
     }
 
-    public void setDomanin(String domanin) {
-        this.domanin = domanin;
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getPOT() {
+        return POT;
+    }
+
+    public void setPOT(String POT) {
+        this.POT = POT;
+    }
+
+    public String getBranch() {
+        return Branch;
+    }
+
+    public void setBranch(String branch) {
+        Branch = branch;
+    }
+
+    public String getYear() {
+        return Year;
+    }
+
+    public void setYear(String year) {
+        Year = year;
+    }
+
+    public String getDateOfJoin() {
+        return DateOfJoin;
+    }
+
+    public void setDateOfJoin(String dateOfJoin) {
+        DateOfJoin = dateOfJoin;
+    }
+
+    public String getProjects() {
+        return Projects;
+    }
+
+    public void setProjects(String projects) {
+        Projects = projects;
     }
 }
