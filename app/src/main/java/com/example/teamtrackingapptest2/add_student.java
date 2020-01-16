@@ -1,6 +1,8 @@
 package com.example.teamtrackingapptest2;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,7 +30,7 @@ public class add_student extends AppCompatActivity {
     ArrayList<Student> newlist;
     Button btn_date_picker,submit;
     Calendar calendar;
-    DatePickerDialog datePickerDialog;
+    DatePickerDialog.OnDateSetListener mDateSetListener;
     TextView tv_date;
     RecyclerView rv;
     DatabaseReference db,db1;
@@ -42,11 +44,12 @@ public class add_student extends AppCompatActivity {
         setContentView(R.layout.add_student);
         db= FirebaseDatabase.getInstance().getReference("Students");
         db1= FirebaseDatabase.getInstance().getReference("Attendance");
-        calendar=Calendar.getInstance();
-         day=calendar.get(Calendar.DAY_OF_MONTH);
+
          Log.d("day",String.valueOf(day));
-         month=calendar.get(Calendar.MONTH);
-         year=calendar.get(Calendar.YEAR);
+
+
+        Log.d("month",String.valueOf(month+1));
+        Log.d("year",String.valueOf(year));
         tv_date= findViewById(R.id.tv_date);
 
         btn_date_picker=findViewById(R.id.btn_date_picker);
@@ -55,17 +58,23 @@ public class add_student extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                datePickerDialog=new DatePickerDialog(add_student.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
-                        tv_date.setText(mdayOfMonth+"-"+(mmonth+1)+"-"+myear);
-                        date1=mdayOfMonth+"-"+(mmonth+1)+"-"+myear;
+                calendar=Calendar.getInstance();
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                month=calendar.get(Calendar.MONTH);
+                year=calendar.get(Calendar.YEAR);
+                DatePickerDialog dialog=new DatePickerDialog(add_student.this,mDateSetListener,year,month,day);
+                dialog.show();
 
-                    }
-                },day,month,year);
-                datePickerDialog.show();
             }
         });
+        mDateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
+              String date=mdayOfMonth+"-"+(mmonth+1)+"-"+year;
+              tv_date.setText(date);
+
+            }
+        };
         newlist=new ArrayList<>();
 
         rv=findViewById(R.id.rv_students);

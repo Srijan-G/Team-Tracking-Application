@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -29,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class attendance_main extends AppCompatActivity {
     private Button btn_add_student,track;
@@ -46,8 +49,10 @@ public class attendance_main extends AppCompatActivity {
     int total_number,number_present;
     FirebaseDatabase firebaseDatabase;
     ArrayList arrayList;
-
-
+    Button date_picker_from,date_picker_to;
+    DatePickerDialog.OnDateSetListener mDateSetListener_from,mDateSetListner_to;
+    Calendar calendar;
+    int day,month,year;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,49 @@ public class attendance_main extends AppCompatActivity {
         tv1=findViewById(R.id.tv_student_name);
         edt_from=findViewById(R.id.edt_from);
         edt_to=findViewById(R.id.edt_to);
+        date_picker_from=findViewById(R.id.btn_date_picker_from);
+        date_picker_to=findViewById(R.id.btn_date_picker_to);
+        date_picker_from.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calendar= Calendar.getInstance();
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                month=calendar.get(Calendar.MONTH);
+                year=calendar.get(Calendar.YEAR);
+                DatePickerDialog dialog=new DatePickerDialog(attendance_main.this,mDateSetListener_from,year,month,day);
+                dialog.show();
+            }
+        });
+        mDateSetListener_from=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int jyear, int jmonth, int jdayOfMonth) {
+                String date=jdayOfMonth+"-"+(jmonth+1)+"-"+jyear;
+                edt_from.setText(date);
+
+            }
+        };
+        date_picker_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calendar= Calendar.getInstance();
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                month=calendar.get(Calendar.MONTH);
+                year=calendar.get(Calendar.YEAR);
+                DatePickerDialog dialog=new DatePickerDialog(attendance_main.this,mDateSetListner_to,year,month,day);
+                dialog.show();
+            }
+        });
+        mDateSetListner_to=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
+
+                String date=mdayOfMonth+"-"+(mmonth+1)+"-"+myear;
+                edt_to.setText(date);
+
+            }
+        };
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,63 +162,80 @@ public class attendance_main extends AppCompatActivity {
         track.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent u=new Intent(attendance_main.this, track.class);
-                name1=tv1.getText().toString().trim();
-                from=edt_from.getText().toString().trim();
-                to=edt_to.getText().toString().trim();
-                total_number=0;
-                number_present=0;
+                final Intent u = new Intent(attendance_main.this, track.class);
+                name1 = tv1.getText().toString().trim();
+                from = edt_from.getText().toString().trim();
+                to = edt_to.getText().toString().trim();
+                if (TextUtils.isEmpty(name1)) {
+                    Toast.makeText(attendance_main.this, "Select a name first", Toast.LENGTH_LONG).show();
+                } else if (TextUtils.isEmpty(from)) {
+                    Toast.makeText(attendance_main.this, "Select a starting date", Toast.LENGTH_LONG).show();
 
-                String [] arrTo=to.split("-");
-                String [] arrFrom=from.split("-");
-                final LocalDate toLocalDate=LocalDate.of(Integer.parseInt(arrTo[2]),Integer.parseInt(arrTo[1]),Integer.parseInt(arrTo[0]));
-                final LocalDate fromLocalDate=LocalDate.of(Integer.parseInt(arrFrom[2]),Integer.parseInt(arrFrom[1]),Integer.parseInt(arrFrom[0]));
-                Log.d("from",fromLocalDate.toString());
-                Log.d("to",toLocalDate.toString());
+                } else if (TextUtils.isEmpty(to)) {
+                    Toast.makeText(attendance_main.this, "Select an ending date", Toast.LENGTH_LONG).show();
 
-                for(LocalDate date=fromLocalDate;date.isBefore(toLocalDate.plusDays(1));date=date.plusDays(1))
-                {
+                } else {
+                    total_number = 0;
+                    number_present = 0;
 
-                    String [] d=date.toString().split("-");
-                    int a=Integer.parseInt(d[1]);
-                    int b=Integer.parseInt(d[2]);
-                    String currentDate=b+"-"+a+"-"+d[0];
+                    String[] arrTo = to.split("-");
+                    String[] arrFrom = from.split("-");
+                    int from_day = Integer.parseInt(arrFrom[0]);
+                    int from_month = Integer.parseInt(arrFrom[1]);
+                    int from_year = Integer.parseInt(arrFrom[2]);
+                    int to_day = Integer.parseInt(arrTo[0]);
+                    int to_month = Integer.parseInt(arrTo[1]);
+                    int to_year = Integer.parseInt(arrTo[2]);
+                    if ((from_year > to_year) || (from_year == to_year && from_month > to_month) || (from_year == to_year && from_month == to_month && from_day > to_day)) {
+                        Toast.makeText(attendance_main.this, "Starting date cannot be greater than ending date", Toast.LENGTH_LONG).show();
 
+                    } else
+                    {
+                        final LocalDate toLocalDate = LocalDate.of(Integer.parseInt(arrTo[2]), Integer.parseInt(arrTo[1]), Integer.parseInt(arrTo[0]));
+                    final LocalDate fromLocalDate = LocalDate.of(Integer.parseInt(arrFrom[2]), Integer.parseInt(arrFrom[1]), Integer.parseInt(arrFrom[0]));
+                    Log.d("from", fromLocalDate.toString());
+                    Log.d("to", toLocalDate.toString());
 
-                    arrayList=new ArrayList<>();
-                    firebaseDatabase=FirebaseDatabase.getInstance();
-                    db2=firebaseDatabase.getReference("Attendance");
-                    itemRef=db2.child(currentDate);
+                    for (LocalDate date = fromLocalDate; date.isBefore(toLocalDate.plusDays(1)); date = date.plusDays(1)) {
 
-                    readData(new FirebaseCallBack() {
-                        @Override
-                        public void onCallback(ArrayList<String> arrayList, int a,int b, LocalDate date2) {
-
-                            Log.d("array",arrayList.toString());
-                            if(date2.isEqual(toLocalDate)) {
-
-                                Log.d("currentdate", date2.toString());
-                                Log.d("total",String.valueOf(a));
-                                Log.d("present",String.valueOf(b));
-                                double d=(double)b;
-                                double present_percent=d/a*100;
-                                double absent_percent=100.0-present_percent;
-                                u.putExtra("name",name1);
-                                u.putExtra("present",present_percent);
-                                u.putExtra("absent",absent_percent);
-                                startActivity(u);
+                        String[] d = date.toString().split("-");
+                        int a = Integer.parseInt(d[1]);
+                        int b = Integer.parseInt(d[2]);
+                        String currentDate = b + "-" + a + "-" + d[0];
 
 
+                        arrayList = new ArrayList<>();
+                        firebaseDatabase = FirebaseDatabase.getInstance();
+                        db2 = firebaseDatabase.getReference("Attendance");
+                        itemRef = db2.child(currentDate);
+
+                        readData(new FirebaseCallBack() {
+                            @Override
+                            public void onCallback(ArrayList<String> arrayList, int a, int b, LocalDate date2) {
+
+                                Log.d("array", arrayList.toString());
+                                if (date2.isEqual(toLocalDate)) {
+
+                                    Log.d("currentdate", date2.toString());
+                                    Log.d("total", String.valueOf(a));
+                                    Log.d("present", String.valueOf(b));
+                                    double d = (double) b;
+                                    double present_percent = d / a * 100;
+                                    double absent_percent = 100.0 - present_percent;
+                                    u.putExtra("name", name1);
+                                    u.putExtra("present", present_percent);
+                                    u.putExtra("absent", absent_percent);
+                                    startActivity(u);
+
+
+                                }
                             }
-                        }
-                    }, date);
+                        }, date);
+
+                    }
 
                 }
-
-
-
-
-
+            }
             }
 
         } );
