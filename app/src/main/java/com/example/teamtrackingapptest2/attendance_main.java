@@ -1,4 +1,3 @@
-
 package com.example.teamtrackingapptest2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,9 +58,6 @@ public class attendance_main extends AppCompatActivity {
         setContentView(R.layout.activity_attendance_main);
         btn_add_student=findViewById(R.id.button);
         track=findViewById(R.id.btn_track);
-        name = findViewById(R.id.edt_name);
-        domain = findViewById(R.id.domain);
-        add = findViewById(R.id.btn_add_student);
         tv1=findViewById(R.id.tv_student_name);
         edt_from=findViewById(R.id.edt_from);
         edt_to=findViewById(R.id.edt_to);
@@ -108,12 +104,7 @@ public class attendance_main extends AppCompatActivity {
 
             }
         };
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addStudent();
-            }
-        });
+
         rv1=findViewById(R.id.rv_name);
         databaseReference= FirebaseDatabase.getInstance().getReference("Students");
         rv1.setLayoutManager(new LinearLayoutManager(this));
@@ -192,50 +183,50 @@ public class attendance_main extends AppCompatActivity {
                     } else
                     {
                         final LocalDate toLocalDate = LocalDate.of(Integer.parseInt(arrTo[2]), Integer.parseInt(arrTo[1]), Integer.parseInt(arrTo[0]));
-                    final LocalDate fromLocalDate = LocalDate.of(Integer.parseInt(arrFrom[2]), Integer.parseInt(arrFrom[1]), Integer.parseInt(arrFrom[0]));
-                    Log.d("from", fromLocalDate.toString());
-                    Log.d("to", toLocalDate.toString());
+                        final LocalDate fromLocalDate = LocalDate.of(Integer.parseInt(arrFrom[2]), Integer.parseInt(arrFrom[1]), Integer.parseInt(arrFrom[0]));
+                        Log.d("from", fromLocalDate.toString());
+                        Log.d("to", toLocalDate.toString());
 
-                    for (LocalDate date = fromLocalDate; date.isBefore(toLocalDate.plusDays(1)); date = date.plusDays(1)) {
+                        for (LocalDate date = fromLocalDate; date.isBefore(toLocalDate.plusDays(1)); date = date.plusDays(1)) {
 
-                        String[] d = date.toString().split("-");
-                        int a = Integer.parseInt(d[1]);
-                        int b = Integer.parseInt(d[2]);
-                        String currentDate = b + "-" + a + "-" + d[0];
-
-
-                        arrayList = new ArrayList<>();
-                        firebaseDatabase = FirebaseDatabase.getInstance();
-                        db2 = firebaseDatabase.getReference("Attendance");
-                        itemRef = db2.child(currentDate);
-
-                        readData(new FirebaseCallBack() {
-                            @Override
-                            public void onCallback(ArrayList<String> arrayList, int a, int b, LocalDate date2) {
-
-                                Log.d("array", arrayList.toString());
-                                if (date2.isEqual(toLocalDate)) {
-
-                                    Log.d("currentdate", date2.toString());
-                                    Log.d("total", String.valueOf(a));
-                                    Log.d("present", String.valueOf(b));
-                                    double d = (double) b;
-                                    double present_percent = d / a * 100;
-                                    double absent_percent = 100.0 - present_percent;
-                                    u.putExtra("name", name1);
-                                    u.putExtra("present", present_percent);
-                                    u.putExtra("absent", absent_percent);
-                                    startActivity(u);
+                            String[] d = date.toString().split("-");
+                            int a = Integer.parseInt(d[1]);
+                            int b = Integer.parseInt(d[2]);
+                            String currentDate = b + "-" + a + "-" + d[0];
 
 
+                            arrayList = new ArrayList<>();
+                            firebaseDatabase = FirebaseDatabase.getInstance();
+                            db2 = firebaseDatabase.getReference("Attendance");
+                            itemRef = db2.child(currentDate);
+
+                            readData(new FirebaseCallBack() {
+                                @Override
+                                public void onCallback(ArrayList<String> arrayList, int a, int b, LocalDate date2) {
+
+                                    Log.d("array", arrayList.toString());
+                                    if (date2.isEqual(toLocalDate)) {
+
+                                        Log.d("currentdate", date2.toString());
+                                        Log.d("total", String.valueOf(a));
+                                        Log.d("present", String.valueOf(b));
+                                        double d = (double) b;
+                                        double present_percent = d / a * 100;
+                                        double absent_percent = 100.0 - present_percent;
+                                        u.putExtra("name", name1);
+                                        u.putExtra("present", present_percent);
+                                        u.putExtra("absent", absent_percent);
+                                        startActivity(u);
+
+
+                                    }
                                 }
-                            }
-                        }, date);
+                            }, date);
+
+                        }
 
                     }
-
                 }
-            }
             }
 
         } );
@@ -278,7 +269,7 @@ public class attendance_main extends AppCompatActivity {
     private interface FirebaseCallBack{
         void onCallback(ArrayList<String> arrayList, int total_number,int number_present, LocalDate date);
     }
-    private void addStudent() {
+    /*private void addStudent() {
         String Name = name.getText().toString().trim();
         String Domain = domain.getSelectedItem().toString();
         if (!TextUtils.isEmpty(Name)) {
@@ -290,5 +281,5 @@ public class attendance_main extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Add a name first", Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 }

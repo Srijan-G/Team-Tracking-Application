@@ -3,19 +3,22 @@
     package="com.example.teamtrackingapptest2">
 
     <application
-        android:label="TeamUp"
         android:allowBackup="true"
         android:icon="@drawable/loginpic"
+        android:label="TeamUp"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".attendance_main"></activity>
+
+=======
+        <activity android:name=".ADD_MEMBER"></activity>
+        <activity android:name=".add_student" />
+>>>>>>> 2993fea7f2f367146db8ea79b7e59709f9081f81
+        <activity android:name=".attendance_main" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".add_student"></activity>
-        <activity android:name=".track"></activity>
+        <activity android:name=".track" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

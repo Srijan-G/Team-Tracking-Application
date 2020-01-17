@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        findViewById(R.id.textviewSignUp).setOnClickListener(this);
-        findViewById(R.id.buttonlogin).setOnClickListener(this);
+        findViewById(R.id.text_viewSignUp).setOnClickListener(this);
+        findViewById(R.id.btn_login).setOnClickListener(this);
         editTextEmail = findViewById(R.id.editText);
         editTextPassword = findViewById(R.id.editText2);
 
@@ -89,10 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         switch(view.getId())
         {
-            case R.id.textviewSignUp:
+            case R.id.text_viewSignUp:
                 startActivity(new Intent(this,SignUpActivity.class));
                 break;
-            case R.id.buttonlogin:
+            case R.id.btn_login:
                 userLogin();
                 break;
         }
